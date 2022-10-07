@@ -1,21 +1,20 @@
 package directories;
 
 import java.io.*;
-import java.util.Scanner;
 
 public class FileMerger {
 
-    public static void main(String[] args) {
+    private String rootPath;
+    private String outputFile;
 
-        Scanner sc = new Scanner(System.in);
+    public FileMerger(String rootPath, String fileName) {
+        this.rootPath = rootPath;
+        this.outputFile = fileName;
+    }
 
-        System.out.println("Enter the path to the root directory:");
-        String path = sc.nextLine().replace('\\', '/');
+    public void appendFiles() {
 
-        System.out.println("Enter the name of the output file:");
-        String outputFile = sc.nextLine();
-
-        File dir = new File(path);
+        File dir = new File(rootPath);
         File outputFileDir = new File(dir, outputFile);
 
         PrintWriter pw = null;
@@ -63,6 +62,7 @@ public class FileMerger {
         }
         pw.close();
         pw.flush();
+
     }
 
 }
